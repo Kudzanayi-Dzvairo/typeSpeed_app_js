@@ -1,5 +1,14 @@
 window.addEventListener('load', init)
 //Global Variables
+
+//Available levels
+const levels = {
+    easy:5,
+    medium: 3,
+    hard:2
+}
+
+//To change level
 let time = 5;
 let score = 0;
 let isPlaying;
@@ -59,7 +68,13 @@ function startMatch(){
         wordInput.value ='';
         score++;
     }
+
+    //if score is -1, display 0
+    if(score === -1){
+        scoreDisplay.innerHTML = 0;
+    } else{
     scoreDisplay.innerHTML = score
+    }
 }
 
 function matchWords(){
