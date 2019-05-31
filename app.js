@@ -3,13 +3,16 @@ window.addEventListener('load', init)
 
 //Available levels
 const levels = {
-    easy:5,
-    medium: 3,
-    hard:2
+    easy:7,
+    medium: 5,
+    hard:3
 }
 
+//to change level
+const currentLevel = levels.hard;
+
 //To change level
-let time = 5;
+let time = currentLevel;
 let score = 0;
 let isPlaying;
 
@@ -18,7 +21,7 @@ const currentWord = document.querySelector('#current-word');
 const scoreDisplay = document.querySelector('#score');
 const timeDisplay = document.querySelector('#time');
 const message = document.querySelector('#message');
-const seconds = document.querySelector('#secods');
+const seconds = document.querySelector('#seconds');
 
 const words = [
     'hat',
@@ -50,6 +53,8 @@ const words = [
 
 //Initialize Game
 function init(){
+    //show number of secods in UI
+    seconds.innerHTML = currentLevel
     //Load word form array
     showWord(words);
     //start matching on word input 
@@ -63,7 +68,7 @@ function init(){
 function startMatch(){
     if(matchWords()){
         isPlaying = true;
-        time = 6;
+        time = currentLevel + 1;
         showWord(words);
         wordInput.value ='';
         score++;
